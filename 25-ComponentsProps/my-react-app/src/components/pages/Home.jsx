@@ -18,9 +18,23 @@ const Home = () => {
 
       <section id='ProjectSection'>
         <div className="servicesContainer">
-            <Headertext>{"Stylish Portfolio is the perfect theme for your next project!"}</Headertext>
-            <Text>{"This theme features a flexible, UX friendly sidebar menu and stock photos from our friends at" } <Alink>{"Unplash"}</Alink></Text>        
-         <Button>{"What we offer "}</Button>
+          <Headertext>{"Stylish Portfolio is the perfect theme for your next project!"}</Headertext>
+          <Text>{"This theme features a flexible, UX friendly sidebar menu and stock photos from our friends at"} <Alink>{"Unplash"}</Alink></Text>
+          <Button>{"What we offer "}</Button>
+        </div>
+      </section>
+
+      <section id='EndSection'>
+        <div className="endContainer">
+          <Headertext>{"The buttons below are impossible to resist..."}</Headertext>
+          <div className="twobutton">
+          <div className="white">
+          <Button >{"Click me!"}</Button>
+          </div>
+          <div className="black">
+          <Button >{"Look at me"}</Button>
+          </div>
+          </div>
         </div>
       </section>
     </>
