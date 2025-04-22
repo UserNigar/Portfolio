@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#MainSection{
+    width: 100%;
+    height: 90vh;
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../img/be581829fe3c28baa3a01e399000644e.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.firstParent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 auto;
+}
+
+.firstParent h1{
+    font-size: 100px;
+}
+.firstParent p{
+    font-size: 30px;
+}
+.firstParent button{
+   width: 170px;
+   height: 60px;
+   border-radius: 5px;
+   background-color: rgb(19, 92, 95);
+   color: white;
+}
+
+
+
+
+
+
+#ProjectSection{
+    width: 100%;
+    height: 60vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.servicesContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+}
+
+.servicesContainer button{
+    width: 170px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: rgb(27, 29, 30);
+    color: white;
+}
+.servicesContainer h1{
+    font-size: 36px;
+
+}
+.servicesContainer p{
+    font-size: 18px;
+    color: gray;
+
+}
