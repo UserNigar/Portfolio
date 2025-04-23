@@ -1,0 +1,35 @@
+.navbar {
+    padding: 20px 40px;
+    display: flex;
+    margin: 0;
+    justify-content: center;
+    width: 100%;
+    background-color: #212529;
+    
+  }
+  
+  .containers {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
+  
+  .logo h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
+  
+  li {
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
