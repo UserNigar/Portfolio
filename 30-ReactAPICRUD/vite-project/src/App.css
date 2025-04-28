@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.editedBox{
+    width: 400px;
+    height: 200px;
+    z-index: 999;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px pink;
+    transition: 0.3s;
+}
+.editedBox input{
+    height: 25px;
+}
+.editedBox .buttons{
+    width: 90%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+.buttons button{
+    width: 90px;
+    border: none;
+    padding: 5px;
+}
+ .btn-1{
+    background-color: green;
+    color: white;
+ }
+ .btn-2{
+    background-color: red;
+    color: white;
+ }
+ .add-btn{
+   background-color: rgb(44, 251, 75);
+   padding: 10px;
+   margin: 10px;
+   border-radius: 50px;
+   border: none;
+   transition: 0.4s;
+   box-shadow: 0px 2px 8px rgba(0, 0, 0);
+
+ }
+ .add-btn:hover{
+    background-color: rgb(255, 0, 0);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 50px;
+    transition: 0.4s;
+  }
