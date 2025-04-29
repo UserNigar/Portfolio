@@ -11,6 +11,8 @@ const App = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [editProduct, setEditProduct] = useState(null);
+  const [isModal, setIsModal] = useState(false);
+  const [newProduct, setNewProduct] = useState({ title: '', price: '' });
 
   useEffect(() => {
     setLoading(true);
@@ -20,12 +22,28 @@ const App = () => {
       .finally(() => setLoading(false));
   }, []);
 
+  const deleteAllProducts = () => {
+    setProducts([]);
+    toast.warn('Bütün məhsullar silindi!');
+  };
+  
   const addProduct = () => {
-    const title = prompt("Məhsulun adını daxil edin:");
-    const price = prompt("Məhsulun qiymətini daxil edin:");
-    if (title && price) {
-      const newProduct = { id: uuidv4(), title, price };
-      setProducts([newProduct, ...products]);
+    setIsModal(true);
+  };
+
+  const saveNewProduct = () => {
+    const { title, price } = newProduct;
+    if (title.trim() && price.trim()) {
+      const productToAdd = { 
+        id: uuidv4(), 
+        title,
+        price 
+      };
+      setProducts([productToAdd, ...products]);
+      setNewProduct({
+         title: '', 
+         price: '' });
+      setIsModal(false);
       toast.success('Yeni məhsul əlavə olundu!');
     } else {
       toast.error('Bütün sahələri doldurun.');
@@ -38,7 +56,9 @@ const App = () => {
   };
 
   const saveEdit = () => {
-    setProducts(products.map(item => item.id === editProduct.id ? editProduct : item));
+    setProducts(products.map(
+      item => item.id === editProduct.id ? editProduct : item
+    ));
     setEditProduct(null);
     toast.success('Məhsul redaktə edildi!');
   };
@@ -50,7 +70,25 @@ const App = () => {
         <DotLoader color="#36d7b7" />
       ) : (
         <>
-          <button className='add-btn' onClick={addProduct}>Məhsul əlavə et</button>
+          
+          {isModal && (
+            <div className='editedBox'>
+              <input 
+                placeholder='Ad' 
+                value={newProduct.title} 
+                onChange={e => setNewProduct({ ...newProduct, title: e.target.value })} 
+              />
+              <input 
+                placeholder='Qiymət' 
+                value={newProduct.price} 
+                onChange={e => setNewProduct({ ...newProduct, price: e.target.value })} 
+              />
+              <div className="buttons">
+                <button className='btn-1' onClick={saveNewProduct}>Əlavə et</button>
+                <button className='btn-2' onClick={() => setIsModal(false)}>Ləğv et</button>
+              </div>
+            </div>
+          )}
 
           {editProduct && (
             <div className='editedBox'>
@@ -63,8 +101,8 @@ const App = () => {
                 onChange={e => setEditProduct({ ...editProduct, price: e.target.value })} 
               />
               <div className="buttons">
-              <button className='btn-1'  onClick={saveEdit}>Yadda saxla</button>
-              <button className='btn-2' onClick={() => setEditProduct(null)}>Ləğv et</button>
+                <button className='btn-1' onClick={saveEdit}>Yadda saxla</button>
+                <button className='btn-2' onClick={() => setEditProduct(null)}>Ləğv et</button>
               </div>
             </div>
           )}
@@ -74,6 +112,9 @@ const App = () => {
             onDelete={deleteProduct} 
             onEdit={setEditProduct} 
           />
+          <button className='add-btn' onClick={addProduct}>Məhsul əlavə et</button>
+          <button  className='dlt-btn' onClick={deleteAllProducts}>Hamsını sil</button>
+
         </>
       )}
     </>
