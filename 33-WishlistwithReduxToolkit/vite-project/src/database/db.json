@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": "3528",
+      "username": "jsygdiasufgsu",
+      "email": "nigar12@gmail.com",
+      "password": "123Nigar@",
+      "confirmPassword": "123Nigar@",
+      "isLogined": false
+    },
+    {
+      "id": "33a3",
+      "username": "NIgar",
+      "email": "nigar@gmail.com",
+      "password": "123Nigar@",
+      "confirmPassword": "123Nigar@",
+      "isLogined": false
+    },
+    {
+      "id": "35bf",
+      "username": "Nigar",
+      "email": "nigarhesenzade703@gmail.com",
+      "password": "123Nigar@",
+      "confirmPassword": "123Nigar@",
+      "isLogined": true
+    }
+  ]
+}
