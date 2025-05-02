@@ -41,38 +41,41 @@ export default function Dropdown() {
           </Button>
 
           <Menu {...bindMenu(popupState)}>
-            {
-              isLoginUser ? (
-                <MenuItem
-                  onClick={() => {
-                    popupState.close();
-                    handleLogout();
-                  }}
-                >
-                  Logout
-                </MenuItem>
-              ) : (
-                <>
-                  <MenuItem
-                    onClick={() => {
-                      popupState.close();
-                      navigate('/register');
-                    }}
-                  >
-                    Register
-                  </MenuItem>
-                  <MenuItem
-                    onClick={() => {
-                      popupState.close();
-                      navigate('/login');
-                    }}
-                  >
-                    Login
-                  </MenuItem>
-                </>
-              )
-            }
-          </Menu>
+  {
+    isLoginUser ? (
+      <MenuItem
+        onClick={() => {
+          popupState.close();
+          handleLogout();
+        }}
+      >
+        Logout
+      </MenuItem>
+    ) : (
+      [
+        <MenuItem
+          key="register"
+          onClick={() => {
+            popupState.close();
+            navigate('/register');
+          }}
+        >
+          Register
+        </MenuItem>,
+        <MenuItem
+          key="login"
+          onClick={() => {
+            popupState.close();
+            navigate('/login');
+          }}
+        >
+          Login
+        </MenuItem>
+      ]
+    )
+  }
+</Menu>
+
         </>
       )}
     </PopupState>

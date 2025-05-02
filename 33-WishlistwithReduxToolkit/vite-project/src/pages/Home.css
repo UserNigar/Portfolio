@@ -1,0 +1,12 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly; /* Align cards evenly with space between them */
+    gap: 20px; /* Space between each card */
+  }
+  
+  .card-container .card {
+    width: 18rem; /* Keep the card width fixed */
+    margin: 10px; /* Space around each card */
+  }
+  
