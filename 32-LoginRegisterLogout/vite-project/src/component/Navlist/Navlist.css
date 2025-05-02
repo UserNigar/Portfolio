@@ -1,0 +1,16 @@
+.list{
+    display: flex;
+    gap: 10px;
+
+}
+
+.list_item{
+    list-style: none;
+    font-size: 23px;
+   
+}
+a{
+    text-decoration: none;
+    color: black;
+    margin: 3px;
+}
