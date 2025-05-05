@@ -4,3 +4,8 @@
     justify-content: center;
     gap: 10px;
 }
+.icon-wrapper{
+    display: flex;
+    align-items: start;
+    justify-content: flex-start;
+}
