@@ -12,7 +12,7 @@ export default function Dropdown() {
   const [existUser, setexistUser] = useState([]);
 
   const getUser = async () => {
-    let { data } = await axios('http://localhost:3000/users');
+    let { data } = await axios('https://fakestoreapi.com/products');
     setexistUser(data);
   };
 

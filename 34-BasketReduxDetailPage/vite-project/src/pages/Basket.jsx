@@ -2,8 +2,8 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Table, Button } from '@mui/material';
 import { toast } from 'react-toastify';
-import "./css/wishlist.css"; // adını istəyə uyğun dəyişə bilərsən
-import { removeBasket, clearBasket } from '../redux/features/basketSlice';
+import "./css/wishlist.css";
+import { removeBasket, clearBasket, plusbtn, minusbtn } from '../redux/features/basketSlice';
 
 const Basket = () => {
   const basket = useSelector((state) => state.basket.basket || []);
@@ -18,6 +18,17 @@ const Basket = () => {
     dispatch(clearBasket());
     toast.info('All products removed from basket');
   };
+const handlePlus = (product) => {
+  dispatch(plusbtn({ id: product.id }));
+  toast.info('Mehsul artirildi');
+};
+
+const handleMinus = (product) => {
+  dispatch(minusbtn({ id: product.id }));
+  toast.info('Mehsul azaldildi');
+};
+
+
 
   const totalPrice = basket.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
@@ -53,7 +64,11 @@ const Basket = () => {
                 </td>
                 <td>{product.title}</td>
                 <td>${product.price}</td>
-                <td>{product.quantity}</td>
+                <td>
+                  <button onClick={()=>handlePlus(product)}> +</button>
+                  {product.quantity}
+                  <button onClick={()=>handleMinus(product)}>-</button>
+                </td>
                 <td>${(product.price * product.quantity).toFixed(2)}</td>
                 <td>
                   <Button

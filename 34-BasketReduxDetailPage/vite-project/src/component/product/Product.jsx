@@ -1,47 +1,62 @@
-import React from 'react';
+import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import { FaHeart } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
-import { updateWishlist } from '../../redux/features/wishlistSlice';
-import { addBasket } from '../../redux/features/basketSlice'; // <-- buranı düzəltdik
-import "./Product.css";
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom';
+import { addBasket } from '../../redux/features/basketSlice';
 
 const Product = ({ product }) => {
-  const dispatch = useDispatch();
-  const wishlist = useSelector((state) => state.wishlist.wishlist || []);
-  const isFavorited = wishlist.some((item) => item.id === product.id);
+    let { wishlist } = useSelector((state) => state.wishlist)
+    let dispatch = useDispatch()
+    let navigate = useNavigate()
 
-  const handleToggleWishlist = () => {
-    dispatch(updateWishlist(product));
-  };
+    let existProduct = wishlist.find((item) => item.id == product.id)
 
-  return (
-    <Card style={{ width: '18rem', margin: '10px', position: "relative" }}>
-      <FavoriteIcon
-        onClick={handleToggleWishlist}
-        style={{
-          position: 'absolute',
-          right: '10px',
-          top: '10px',
-          cursor: 'pointer',
-          color: isFavorited ? 'red' : 'gray',
-        }}
-      />
-      <Card.Img variant="top" src={product.image} />
-      <Card.Body>
-        <Card.Title>{product.title}</Card.Title>
-        <Card.Text>
-          {product.description.slice(0, 100)}...
-        </Card.Text>
-        <Button variant="primary"
-          onClick={() => dispatch(addBasket(product))} // <-- buranı da düzəltdik
-        >
-          Add to Basket
-        </Button>
-      </Card.Body>
-    </Card>
-  );
-};
+    const handleWishlist = () => {
+        
+        dispatch(updateWishlist(product))
+        if (existProduct) {
+            toast.info("Product removed from wishlist")
+        } else {
+            toast.success("Product added to wishlist")
+        }
+    }
+    
 
-export default Product;
+    return (
+    <div 
+        className='col-3' 
+        onClick={() => navigate(`/productdetail/${product.id}`)}
+    >
+        <Card style={{width: "18rem", padding: "10px", position: "relative"}}>
+            <FaHeart style={{position: "absolute", right: "10px", cursor: "pointer", color: existProduct ? "red" : "black"}}
+                onClick={(e) => {
+                    e.stopPropagation()
+                    handleWishlist()
+                }}
+            />
+        <Card.Img
+            variant="top"
+            src={product.image}
+            style={{ height: "18rem", padding: "10px"}}
+        />
+        <Card.Body>
+            <Card.Title>{`${product.title.slice(0, 20)}...`}</Card.Title>
+            <Card.Text>{product.price}</Card.Text>
+            <Button variant="primary" style={{width: "100%"}}  
+                onClick={(e) =>{ 
+                    e.stopPropagation()
+                    dispatch(addBasket(product))
+                }}
+            >
+                Add Basket
+            </Button>
+        </Card.Body>
+        </Card>
+    </div>
+  )
+}
+
+export default Product

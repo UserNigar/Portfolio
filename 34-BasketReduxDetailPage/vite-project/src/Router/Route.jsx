@@ -9,6 +9,7 @@ import Login from '../pages/Auth/Login';
 import Register from '../pages/Auth/Register';
 import Wishlist from '../pages/Wishlist';
 import Basket from '../pages/Basket';
+import ProductDetailPage from '../pages/productdetail/ProductDetailPage';
 
 export const routers = createBrowserRouter([
   {
@@ -48,5 +49,9 @@ export const routers = createBrowserRouter([
   {
     path: '*',
     element: <NotFound />,
+  },
+  {
+    path: '/productdetail/:id',
+    element: <ProductDetailPage />,
   },
 ]);

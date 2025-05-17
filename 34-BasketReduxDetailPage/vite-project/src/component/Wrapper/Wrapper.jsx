@@ -8,8 +8,9 @@ import { useNavigate } from 'react-router-dom';
 
 const Wrapper = () => {
   const wishlist = useSelector((state) => state.wishlist.wishlist);
+    const basket = useSelector((state) => state.basket.basket);
   const navigate = useNavigate();
-
+const total =basket.reduce((sum,item)=>sum+item.quantity ,0)
   return (
     <div className='wrapper'>
       <div className="icon-wrapper" onClick={() => navigate('/wishlist')}>
@@ -22,7 +23,7 @@ const Wrapper = () => {
       <ShoppingCartIcon />
           <sup style={{
             fontSize:"15px"
-          }} >{wishlist.length}</sup>
+          }} >{total}</sup>
       </div>
      
       <Dropdown />
