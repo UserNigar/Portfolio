@@ -4,7 +4,7 @@ import axios from 'axios'
 const initialState={
     products:[],
 }
-const baseUrl="http://localhost:3000/product"
+const baseUrl="https://fakestoreapi.com/products"
 
 export const getProduct=createAsyncThunk("products", async()=>{
     let {data}=await axios(baseUrl);
