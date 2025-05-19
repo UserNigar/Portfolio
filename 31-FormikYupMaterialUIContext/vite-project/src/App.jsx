@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/navbar/Navbra';
 import Products from './Context/Product';
 import Register from './components/Pages/Register';
+import Login from './components/Pages/Login';
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Products />} />
             <Route path="/register" element={<Register />} />
+            <Route path='/login' element={<Login/>}/>
           </Routes>
         </ProductProvider>
       </AuthProvider>
